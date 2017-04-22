@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamagram.Views.MainView" Title="Xamagram">
+  <Label Text="Xamagram" HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+  
+  <ListView x:Name="CityListView" ItemsSource="{Binding Cities}" SelectedItem="{Binding selectedCity}">
+    <ListView.ItemTemplate>
+      <DataTemplate >
+        <ImageCell ImageSource="{Binding img}"
+                  Text="{Binding name}"
+                  TextColor="Pink"
+                  Detail="{Binding description}"
+                  DetailColor="Gray" />                                                                                                                    
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

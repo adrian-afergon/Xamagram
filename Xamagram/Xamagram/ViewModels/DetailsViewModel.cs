@@ -14,9 +14,9 @@ namespace Xamagram.ViewModels
     {
 
         private City _city;
-            
-            
-        public City City {
+                    
+        public City City
+        {
             get { return _city; }
             set {
                 _city = value;

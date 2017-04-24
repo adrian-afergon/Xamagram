@@ -18,10 +18,12 @@ namespace Xamagram.ViewModels
 
         public City selectedCity {
 
-            get {
+            get
+            {
                 return selectedCity;
             }
-            set {
+            set
+            {
                 if (value != null)
                 {
                     _navigation.PushAsync(new DetailsView(value.id));
@@ -31,7 +33,8 @@ namespace Xamagram.ViewModels
         private INavigation _navigation;
         public ICommand NavigateCommand { set; get; }
 
-        public CitiesViewModel(INavigation navigation) {
+        public CitiesViewModel(INavigation navigation)
+        {
             _navigation = navigation;
             initialiceList(); 
         }

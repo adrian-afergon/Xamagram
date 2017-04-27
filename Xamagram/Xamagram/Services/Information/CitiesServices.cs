@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,10 @@ namespace Xamagram.Services
             if (String.IsNullOrEmpty(token)) {
                 return null;
             }
+
+            var client = new MobileServiceClient("http://xamagramnode02-afergon.azurewebsites.net/tables/xamagramitem");
+            client.GetTable<City>();
+
             return cities;
         }
 

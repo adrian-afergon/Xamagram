@@ -21,7 +21,7 @@ namespace Xamagram.Services
             }
         }
 
-        public async Task<string> PickPhotoAsync()
+        public async Task<MediaFile> PickPhotoAsync()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Xamagram.Services
                     imagePath = file.Path;
                 }
 
-                return imagePath;
+                return file;
             }
             catch (TaskCanceledException)
             {
@@ -47,7 +47,7 @@ namespace Xamagram.Services
             }
         }
 
-        public async Task<string> TakePhotoAsync()
+        public async Task<MediaFile> TakePhotoAsync()
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Xamagram.Services
                     imagePath = file.Path;
                 }
 
-                return imagePath;
+                return file;
             }
             catch (TaskCanceledException)
             {

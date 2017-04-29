@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Plugin.Media.Abstractions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamagram.Models;
 using Xamagram.Services;
@@ -13,6 +14,7 @@ namespace Xamagram.ViewModels
         private string _imageUrl;
         private string _name;
         private string _description;
+        private MediaFile _image;
 
         public string Id
         {
@@ -50,6 +52,16 @@ namespace Xamagram.ViewModels
             }
         }
 
+        public MediaFile Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                OnPropertyChanged("ImageUrl");
+            }
+        }
+
         public ICommand CameraCommand => new Command(async () => await CameraAsync());
 
         public ICommand SaveCommand => new Command(async () => await SaveAsync());
@@ -75,14 +87,16 @@ namespace Xamagram.ViewModels
         {
             var result = await PhotoService.Instance.TakePhotoAsync();
 
-            if (!string.IsNullOrEmpty(result))
+            if (null != result)
             {
-                ImageUrl = result;
+                Image = result;
+                ImageUrl = result.Path;
             }
         }
 
         private async Task SaveAsync()
         {
+            ImageUrl = await BlobService.Instance.UploadPhotoAsync(Image);
             var xamagramItem = new XamagramItem
             {
                 Id = Id,

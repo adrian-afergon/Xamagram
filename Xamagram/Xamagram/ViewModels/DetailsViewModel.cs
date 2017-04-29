@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamagram.Models;
 using Xamagram.Services;
+using Xamagram.ViewModels.Base;
 using Xamarin.Forms;
 
 namespace Xamagram.ViewModels
 {
-    class DetailsViewModel : BindableObject
+    class DetailsViewModel : ViewModelBase
     {
 
         private City _city;

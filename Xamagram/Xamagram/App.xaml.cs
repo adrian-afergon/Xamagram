@@ -13,7 +13,7 @@ namespace Xamagram
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainView());
+            MainPage = new NavigationPage(new XamagramItemsView(null));
         }
 
         protected override void OnStart()
